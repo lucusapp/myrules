@@ -9,9 +9,24 @@ function App() {
 
   return (
     <div className="flex h-screen">
-      <SidebarLeft selectedTopic={selectedTopic} onSelectTopic={setSelectedTopic} />
-      <SidebarRight selectedTopic={selectedTopic} onSelectSubtopic={setSelectedSubtopic} />
-      <ContentArea selectedTopic={selectedTopic} selectedSubtopic={selectedSubtopic} />
+<SidebarLeft
+  selectedTopic={selectedTopic}
+  onSelectTopic={(topic) => {
+    setSelectedTopic(topic);
+    setSelectedSubtopic(null); // Reinicia subtema al cambiar de tema
+  }}
+/>
+
+<SidebarRight
+  selectedTopic={selectedTopic}
+  onSelectSubtopic={(sub) => setSelectedSubtopic(sub)}
+/>
+
+<ContentArea
+  selectedTopic={selectedTopic}
+  selectedSubtopic={selectedSubtopic}
+/>
+
     </div>
   );
 }
